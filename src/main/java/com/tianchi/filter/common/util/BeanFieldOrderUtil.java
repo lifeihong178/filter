@@ -18,6 +18,15 @@ import java.util.List;
 public class BeanFieldOrderUtil {
 
     /**
+     *  List<TradeHistory> tradeHistoryList = null;
+     *         try {
+     *             tradeHistoryList = BeanFieldOrderUtil.str2List(fileStr, TradeHistory.class);
+     *
+     *         } catch (Exception e) {
+     *             log.error("获取有序的字段出现异常：{}", e.getMessage());
+     *         }
+     */
+    /**
      * 对含有BeanFileOrder进行排序
      *
      * @param fields
