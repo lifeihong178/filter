@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @Author: zhouheng
  * @Created: with IntelliJ IDEA.
@@ -17,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class FilterBean {
+public class FilterBean implements Serializable {
     /**
      * 全局唯一的Id，用作整个链路的唯一标识与组装
      */
