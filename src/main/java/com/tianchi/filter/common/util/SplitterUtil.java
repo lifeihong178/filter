@@ -64,15 +64,6 @@ public class SplitterUtil {
         return res;
     }
 
-    public static void main(String[] args) {
-        List<String> strings = splitter2List("123,456,789");
-
-        strings.add("str");
-        String s = ListJoinStr(strings);
-        System.out.println(s);
-        System.out.println(strings);
-    }
-
     /**
      * list2Str
      *
