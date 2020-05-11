@@ -3,6 +3,7 @@ package com.tianchi.filter.common.util;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
 import com.tianchi.filter.common.annoation.BeanFieldOrder;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Comparator;
