@@ -1,7 +1,10 @@
 package com.tianchi.filter.entity;
 
 import com.tianchi.filter.common.annoation.BeanFieldOrder;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @Author: zhouheng
@@ -11,6 +14,9 @@ import lombok.Data;
  * @Time: 10:06
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class FilterBean {
     /**
      * 全局唯一的Id，用作整个链路的唯一标识与组装
