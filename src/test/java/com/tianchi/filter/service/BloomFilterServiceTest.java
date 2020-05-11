@@ -25,8 +25,12 @@ public class BloomFilterServiceTest {
     @Test
     public void getBloomFilter() {
 
-        boolean bloomFilter = service.getBloomFilter();
-        System.out.println(bloomFilter);
+        for (int i = 52000000; i < 55000000; i+=500000) {
+//            for (double j = 0.002; j < 0.02; j++) {
+                boolean bloomFilter = service.getBloomFilter(i, 0.002);
+
+//            }
+        }
 
     }
 }
