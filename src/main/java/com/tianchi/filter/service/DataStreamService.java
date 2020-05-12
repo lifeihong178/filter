@@ -3,6 +3,7 @@ package com.tianchi.filter.service;
 import com.tianchi.filter.common.util.BeanFieldOrderUtil;
 import com.tianchi.filter.entity.FilterBean;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,6 +28,9 @@ public class DataStreamService {
      * @return
      */
     public List<FilterBean> dealDataAll(String fileStr) {
+        if (StringUtils.isBlank(fileStr)) {
+            log.info("fileStr:{} 空----", fileStr);
+        }
         List<FilterBean> filterBeanList = null;
         try {
             filterBeanList = BeanFieldOrderUtil.str2List(fileStr, FilterBean.class);

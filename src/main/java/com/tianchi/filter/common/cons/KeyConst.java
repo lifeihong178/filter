@@ -18,5 +18,7 @@ public interface KeyConst {
 
     String SPLITTER_AND = "&";
 
+    String BLOOM_FILTER = "bloom_filter";
+
 
 }
