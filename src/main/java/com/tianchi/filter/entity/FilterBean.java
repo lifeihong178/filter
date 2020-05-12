@@ -73,4 +73,10 @@ public class FilterBean implements Serializable {
      */
     @BeanFieldOrder(order = 9)
     private String tags;
+
+    // TODO: 2020/5/12 判断toString 是否需要包含其他信息
+    @Override
+    public String toString() {
+        return traceId + spanId + parentSpanId + serviceName + spanName + tags;
+    }
 }

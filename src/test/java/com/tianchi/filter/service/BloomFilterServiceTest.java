@@ -27,7 +27,7 @@ public class BloomFilterServiceTest {
     public void getBloomFilter() {
 
 
-        boolean bloomFilter = service.getBloomFilter(new FilterBean());
+        boolean bloomFilter = service.containBloomFilter(new FilterBean());
         System.out.println(bloomFilter);
 
 

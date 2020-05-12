@@ -20,5 +20,7 @@ public interface KeyConst {
 
     String BLOOM_FILTER = "bloom_filter";
 
+    String HTTP_STATUS = "http.status_code";
+    String ERROR = "error";
 
 }
