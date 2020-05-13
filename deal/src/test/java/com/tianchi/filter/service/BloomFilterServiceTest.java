@@ -1,6 +1,6 @@
 package com.tianchi.filter.service;
 
-import com.tianchi.filter.FilterApplication;
+import com.tianchi.filter.DealApplication;
 import com.tianchi.filter.entity.FilterBean;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @Time: 14:41
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = FilterApplication.class)
+@SpringBootTest(classes = DealApplication.class)
 //@ActiveProfiles("dev")
 public class BloomFilterServiceTest {
 
