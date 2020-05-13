@@ -26,4 +26,9 @@ public interface KeyConst {
 
     String ERROR_VALUE = "1";
 
+    /**
+     * set队列
+     */
+    String SET_KEY = "set:queue";
+
 }
