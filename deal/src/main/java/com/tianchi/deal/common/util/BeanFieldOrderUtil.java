@@ -1,8 +1,8 @@
-package com.tianchi.filter.common.util;
+package com.tianchi.deal.common.util;
 
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
-import com.tianchi.filter.common.annoation.BeanFieldOrder;
+import com.tianchi.deal.common.annoation.BeanFieldOrder;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

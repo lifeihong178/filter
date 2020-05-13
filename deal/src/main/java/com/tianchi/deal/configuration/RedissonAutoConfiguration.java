@@ -1,4 +1,4 @@
-package com.tianchi.filter.configuration;
+package com.tianchi.deal.configuration;
 
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.Redisson;

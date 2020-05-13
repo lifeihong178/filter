@@ -1,4 +1,4 @@
-package com.tianchi.filter.common.annoation;
+package com.tianchi.deal.common.annoation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

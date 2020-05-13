@@ -1,6 +1,6 @@
-package com.tianchi.filter.common.controller;
+package com.tianchi.deal.common.controller;
 
-import com.tianchi.filter.service.BloomFilterService;
+import com.tianchi.deal.service.BloomFilterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

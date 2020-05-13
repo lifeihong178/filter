@@ -1,4 +1,4 @@
-package com.tianchi.filter.configuration;
+package com.tianchi.deal.configuration;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

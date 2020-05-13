@@ -1,11 +1,9 @@
-package com.tianchi.filter.common;
+package com.tianchi.deal.common;
 
 import com.google.common.hash.BloomFilter;
 import com.google.common.hash.Funnels;
 import com.google.common.base.Charsets;
-import com.google.common.hash.BloomFilter;
-import com.google.common.hash.Funnels;
-import com.tianchi.filter.entity.FilterBean;
+import com.tianchi.deal.entity.FilterBean;
 
 /**
  * @Author: zhouheng

@@ -1,11 +1,10 @@
-package com.tianchi.filter.service;
+package com.tianchi.deal.service;
 
-import com.google.common.base.Splitter;
 import com.google.common.base.Stopwatch;
 import com.google.common.collect.ArrayListMultimap;
-import com.tianchi.filter.common.cons.KeyConst;
-import com.tianchi.filter.common.util.SplitterUtil;
-import com.tianchi.filter.entity.FilterBean;
+import com.tianchi.deal.common.cons.KeyConst;
+import com.tianchi.deal.common.util.SplitterUtil;
+import com.tianchi.deal.entity.FilterBean;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RBloomFilter;
 import org.redisson.api.RedissonClient;

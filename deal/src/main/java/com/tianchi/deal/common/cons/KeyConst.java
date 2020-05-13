@@ -1,4 +1,4 @@
-package com.tianchi.filter.common.cons;
+package com.tianchi.deal.common.cons;
 
 /**
  * @Author: zhouheng

@@ -1,7 +1,7 @@
-package com.tianchi.filter.service;
+package com.tianchi.deal.service;
 
-import com.tianchi.filter.common.util.BeanFieldOrderUtil;
-import com.tianchi.filter.entity.FilterBean;
+import com.tianchi.deal.common.util.BeanFieldOrderUtil;
+import com.tianchi.deal.entity.FilterBean;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;

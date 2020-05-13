@@ -1,4 +1,4 @@
-package com.tianchi.filter;
+package com.tianchi.deal;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

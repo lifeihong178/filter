@@ -1,7 +1,7 @@
-package com.tianchi.filter.service;
+package com.tianchi.deal.service;
 
-import com.tianchi.filter.DealApplication;
-import com.tianchi.filter.entity.FilterBean;
+import com.tianchi.deal.DealApplication;
+import com.tianchi.deal.entity.FilterBean;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package com.tianchi.filter.entity;
+package com.tianchi.deal.entity;
 
-import com.tianchi.filter.common.annoation.BeanFieldOrder;
+import com.tianchi.deal.common.annoation.BeanFieldOrder;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
