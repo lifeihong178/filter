@@ -1,7 +1,5 @@
 package com.tianchi.filter.common.cons;
 
-import java.math.BigDecimal;
-
 /**
  * @Author: zhouheng
  * @Created: with IntelliJ IDEA.
