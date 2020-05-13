@@ -56,4 +56,50 @@ public class DataStreamService {
         return filterBean;
     }
 
+    /**
+     * 反射效率可能不高，使用直接赋值的方式
+     *
+     * @param fileStr
+     * @return
+     */
+    public FilterBean dealDataSingleBySplitter(String fileStr, FilterBean filterBean) {
+//        FilterBean filterBean = new FilterBean();
+
+        try {
+            String[] split = fileStr.split("\\|",-1);
+            filterBean.setTraceId(split[0]);
+            filterBean.setStartTime(split[1]);
+            filterBean.setSpanId(split[2]);
+            filterBean.setParentSpanId(split[3]);
+            filterBean.setDuration(split[4]);
+            filterBean.setServiceName(split[5]);
+            filterBean.setSpanName(split[6]);
+            filterBean.setHost(split[7]);
+            filterBean.setTags(split[8]);
+        } catch (Exception e) {
+            log.error("获取有序的字段出现异常：{}", e.getMessage());
+        }
+        return filterBean;
+    }
+
+    public  FilterBean dealDataBySplitter(String fileStr) {
+        FilterBean filterBean = new FilterBean();
+
+        try {
+            String[] split = fileStr.split("\\|");
+            filterBean.setTraceId(split[0]);
+            filterBean.setStartTime(split[1]);
+            filterBean.setSpanId(split[2]);
+            filterBean.setParentSpanId(split[3]);
+            filterBean.setDuration(split[4]);
+            filterBean.setServiceName(split[5]);
+            filterBean.setSpanName(split[6]);
+            filterBean.setHost(split[7]);
+            filterBean.setTags(split[8]);
+        } catch (Exception e) {
+            log.error("获取有序的字段出现异常：{}", e.getMessage());
+        }
+        return filterBean;
+    }
+
 }

@@ -65,14 +65,14 @@ public class BloomFilterService implements InitializingBean {
         }
         if (map.containsKey(KeyConst.HTTP_STATUS)) {
             String s = map.get(KeyConst.HTTP_STATUS);
-            if (!s.equals("200")) {
+            if (!KeyConst.HTTP_STATUS_VALUE.equals(s)) {
                 return true;
             }
 
         }
         if (map.containsKey(KeyConst.ERROR)) {
             String s = map.get(KeyConst.ERROR);
-            if (s.equals("1")) {
+            if (KeyConst.ERROR_VALUE.equals(s)) {
                 return true;
             }
 
