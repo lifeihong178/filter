@@ -58,8 +58,7 @@ public class BloomFilterService implements InitializingBean {
      */
     public boolean judgeMustSubmit(FilterBean filterBean) {
 
-        RSet<Object> set = redisson.getSet(KeyConst.SET_KEY);
-        boolean contains = set.contains(filterBean.getTraceId());
+        boolean contains = getSetQueue().contains(filterBean.getTraceId());
         return contains;
 
     }
@@ -71,10 +70,17 @@ public class BloomFilterService implements InitializingBean {
      */
     public boolean putMustSubmit(FilterBean filterBean) {
 
-        RSet<Object> set = redisson.getSet(KeyConst.SET_KEY);
-        boolean contains = set.add(filterBean.getTraceId());
+        boolean contains = getSetQueue().add(filterBean.getTraceId());
         return contains;
 
+    }
+
+    /**
+     * 获取set
+     * @return
+     */
+    private RSet<Object> getSetQueue() {
+        return redisson.getSet(KeyConst.SET_KEY);
     }
 
     /**
@@ -134,6 +140,7 @@ public class BloomFilterService implements InitializingBean {
      * @return
      */
     public boolean addBloomFilter(FilterBean bean) {
+
         return bloomFilter.add(bean);
     }
 
@@ -174,6 +181,7 @@ public class BloomFilterService implements InitializingBean {
 
             // TODO: 2020/5/13 上报给后端程序,上报完成以后终止
             addBloomFilter(filterBean);
+            putMustSubmit(filterBean);
             return;
 
         }
@@ -195,6 +203,7 @@ public class BloomFilterService implements InitializingBean {
                 putMustSubmit(filterBean);
             } else {
                 // 存在过滤器中，则有可能需要上报
+                // TODO: 2020/5/13 暂时不做处理
 
             }
         }
