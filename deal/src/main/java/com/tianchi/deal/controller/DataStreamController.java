@@ -20,9 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class DataStreamController {
 
     @Autowired
-    private BloomFilterService bloomFilterService;
-
-    @Autowired
     private DataStreamService dataStreamService;
 
     @RequestMapping("ready")
@@ -39,6 +36,7 @@ public class DataStreamController {
      */
     @RequestMapping("/setParamter")
     public void getParam(String dataport) throws Exception {
+        // TODO: 2020/5/14 还需要设置trace2.data
         Response response = OkHttpClientUtils.get("localhost:" + dataport + "/trace1.data");
         dataStreamService.readStream(response.body().byteStream());
     }
