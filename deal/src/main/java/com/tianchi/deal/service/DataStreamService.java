@@ -2,11 +2,18 @@ package com.tianchi.deal.service;
 
 import com.tianchi.deal.common.util.BeanFieldOrderUtil;
 import com.tianchi.deal.entity.FilterBean;
+import com.tianchi.deal.thread.DealDataThread;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.aop.scope.ScopedProxyUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.*;
 
 /**
  * @Author: zhouheng
@@ -19,6 +26,15 @@ import java.util.List;
 @Service
 public class DataStreamService {
 
+    @Autowired
+    private BloomFilterService bloomFilterService;
+
+
+    private static int corePoolSize = Runtime.getRuntime().availableProcessors();
+
+    private static ThreadPoolExecutor executorService = new ThreadPoolExecutor(corePoolSize, corePoolSize + 1, 10L, TimeUnit.SECONDS,
+            new LinkedBlockingQueue<Runnable>(1000));
+
 
     /**
      * 614959183521b4b|1587457762873000|d614959183521b4b|0|311601|order|getOrder|192.168.1.3|http.status_code:200
@@ -28,6 +44,7 @@ public class DataStreamService {
      * @return
      */
     public List<FilterBean> dealDataAll(String fileStr) {
+
         if (StringUtils.isBlank(fileStr)) {
             log.info("fileStr:{} 空----", fileStr);
         }
@@ -54,6 +71,23 @@ public class DataStreamService {
             log.error("获取有序的字段出现异常：{}", e.getMessage());
         }
         return filterBean;
+    }
+    public  void readFile() throws Exception{
+        File file = new File("/Users/h/Downloads/trace2.data");
+        BufferedReader buffered = new BufferedReader(new FileReader(file));
+        String s = "";
+        List<String> list = new ArrayList<>();
+        while ((s = buffered.readLine()) != null) {
+            list.add(s);
+            if (list.size() == 50000) {
+                executorService.execute(new DealDataThread(bloomFilterService, list));
+                list = new ArrayList<>();
+            }
+        }
+        if (list.size() > 0) {
+            executorService.execute(new DealDataThread(bloomFilterService, list));
+        }
+
     }
 
     /**

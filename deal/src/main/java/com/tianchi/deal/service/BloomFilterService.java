@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * @Author: zhouheng
@@ -104,7 +105,7 @@ public class BloomFilterService implements InitializingBean {
         String tags = bean.getTags();
         List<String> tagsStr = SplitterUtil.splitter2ListWithSplitter(tags, KeyConst.SPLITTER_AND);
         for (String keyValue : tagsStr) {
-            String[] split = keyValue.split(":");
+            String[] split = keyValue.split("=");
             if (KeyConst.HTTP_STATUS.equals(split[0]) || KeyConst.ERROR.equals(split[0])) {
                 map.put(split[0], split[1]);
             }
@@ -165,7 +166,12 @@ public class BloomFilterService implements InitializingBean {
         bloomFilter.tryInit(55000000, 0.0002);
     }
 
+    /**
+     * 核心处理数据方法
+     * @param filterStr
+     */
     public void dealStreamDate(String filterStr) {
+
         /**
          * 转化字符串为对象
          */
@@ -178,22 +184,25 @@ public class BloomFilterService implements InitializingBean {
 
         // 必须上报的
         if (mustSubmit) {
-
+            sendToServer(filterBean);
             // TODO: 2020/5/13 上报给后端程序,上报完成以后终止
-            addBloomFilter(filterBean);
-            putMustSubmit(filterBean);
+//            addBloomFilter(filterBean);
+//            putMustSubmit(filterBean);
             return;
 
         }
 
         // 判断是否需要上报的bean
+
+
         boolean errorData = errorData(filterBean);
         if (errorData) {
+            log.info("判断是否需要上报=======>");
             // 判断字符串是否在过滤器中存在
             boolean result = containBloomFilter(filterBean);
 //            如果不存在过滤其中则需要上报
             if (!result) {
-
+                sendToServer(filterBean);
                 // TODO: 2020/5/13 走上报
 //                上报完成后
                 addBloomFilter(filterBean);
@@ -217,6 +226,7 @@ public class BloomFilterService implements InitializingBean {
      */
     private boolean sendToServer(FilterBean filterBean) {
 
+        log.error("=======>{}", filterBean);
         return true;
     }
 }
