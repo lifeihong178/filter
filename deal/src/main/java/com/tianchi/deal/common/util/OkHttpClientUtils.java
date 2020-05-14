@@ -19,6 +19,22 @@ public class OkHttpClientUtils {
         return response.body().string(); // 返回的是string 类型
     }
 
+    /**
+     * get请求获取response
+     * @param url
+     * @return
+     * @throws IOException
+     */
+    public static Response get(String url) throws IOException {
+        OkHttpClient httpClient = new OkHttpClient();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        Response response = httpClient.newCall(request).execute();
+        return response; // 返回的是string 类型
+    }
+
 
     public static Headers SetHeaders(Map<String, String> headersParams) {
         Headers headers = null;

@@ -89,6 +89,22 @@ public class DataStreamService {
         }
 
     }
+    public  void readStream(InputStream inputStream) throws Exception{
+        BufferedReader buffered = new BufferedReader(new InputStreamReader(inputStream));
+        String s;
+        List<String> list = new ArrayList<>();
+        while ((s = buffered.readLine()) != null) {
+            list.add(s);
+            if (list.size() == 50000) {
+                executorService.execute(new DealDataThread(bloomFilterService, list));
+                list = new ArrayList<>();
+            }
+        }
+        if (list.size() > 0) {
+            executorService.execute(new DealDataThread(bloomFilterService, list));
+        }
+
+    }
 
     /**
      * 反射效率可能不高，使用直接赋值的方式
