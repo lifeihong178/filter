@@ -31,4 +31,6 @@ public interface KeyConst {
      */
     String SET_KEY = "set:queue";
 
+    String REDIS_INIT_KEY = "redis:init:key";
+
 }
