@@ -27,7 +27,5 @@ public class DealDataThread implements Runnable {
         for (String filterStr : filterStrList) {
             bloomFilterService.dealStreamDate(filterStr);
         }
-
-
     }
 }
